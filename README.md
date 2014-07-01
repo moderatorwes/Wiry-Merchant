@@ -54,7 +54,9 @@ background: url(/hc/theme_assets/YOURPATH/yourimage.jpg) no-repeat center center
 
 Screenshots
 ===========
+HOME PAGE
 ![Alt text](/Screenshots/Wiry-Merchant-Home.png?raw=true "Home Page")
+COMMUNITY PAGE
 ![Alt text](/Screenshots/Wiry-Merchant-Community.png?raw=true "Community Page")
 
 
