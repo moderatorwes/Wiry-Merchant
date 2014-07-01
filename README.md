@@ -1,11 +1,7 @@
-Wiry-Merchant
-=============
 
 Wiry-Merchant Responsive
 =======================
-Wiry-Mechant is the default theme from Zendesk but now its responsive.  Also added was a background image inside of the Search Area. 
-If you choose to enable the community then all the JavaScript/JQuery is already in place.  Very few modifications were made to this template,
-just enough to make it responsive as I had several users asking for it.  U
+Wiry-Mechant is the default theme from Zendesk but now its responsive.  Also added was a background image inside of the Search Area. If you choose to enable the community then all the JavaScript/JQuery is already in place.  Very few modifications were made to this template, just enough to make it responsive as I had several users asking for it.  Enjoy.
 
 Like my theme then show your appreciation with a cup of coffee or two.  
 <a href='http://ko-fi.com?i=8d141fc13e992fb' target='_blank'><img style='border:0px' src='http://ko-fi.com/img/button-4.png' border='0' alt='Buy Me A Coffee :) @ ko-fi.com' /></a>
