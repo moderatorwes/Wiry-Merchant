@@ -1,4 +1,7 @@
 
+(DO NOT USE THIS THEME AS ITS NEEDS TO BE CONVERTED TO THE NEW CURLYBARS FRAMEWORK)
+*I will be updating this theme soon!
+
 Wiry-Merchant Responsive
 =======================
 Wiry-Mechant is the default theme from Zendesk but now its responsive.  Also added was a background image inside of the Search Area. If you choose to enable the community then all the JavaScript/JQuery is already in place.  Very few modifications were made to this template, just enough to make it responsive as I had several users asking for it.  Enjoy.
