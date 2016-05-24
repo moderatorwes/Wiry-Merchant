@@ -1,23 +1,117 @@
 <div class="container">
-	<header class="my-activities-header">
-		{{breadcrumbs}}
-	</header>
+  <header class="my-activities-header">
+    {{breadcrumbs}}
+  </header>
+  
+  <nav class="my-activities-nav">
+    <ul>
+      <li>{{t 'requests'}}</li>
+      <li>{{link 'contributions'}}</li>
+      <li>{{link 'subscriptions'}}</li>
+    </ul>
+  </nav>
+  
+  <nav class="my-activities-sub-nav">
+    <ul>
+      {{#each filters}}
+        <li>
+          {{#if selected}}
+            {{name}}
+          {{else}}
+            <a href="{{url}}">{{name}}</a>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  </nav>
+  
+  <div class="request-table-toolbar">
+    {{input 'query' id='quick-search' type='search' class='requests-search'}}
+    {{label 'organization' for='request-organization-select' class='request-filter'}}
+    {{select 'organization' id='request-organization-select' class='request-filter'}}
+    {{label 'status' for='request-status-select' class='request-filter'}}
+    {{select 'status' id='request-status-select' class='request-filter'}}
+  </div>
+  
+  <div class="my-activities-table request-table">
+    <script>
+    $(document).ready(function() {
 
-	<nav class="my-activities-nav">
-		{{my_activities_navigation}}
-	</nav>
+      // Submit search on select change
+      $("#request-status-select, #request-organization-select")
+        .on("change", function() {
+          search();
+        });
 
-	<nav class="my-activities-sub-nav">
-		{{request_navigation}}
-	</nav>
+      // Submit search on input enter
+      $("#quick-search").on("keypress", function(e) {
+        if (e.which === 13) {
+          search();
+        }
+      });
 
-	<div class="request-table-toolbar">
-		{{request_filter}}
-		{{organization_selector}}
-		{{status_selector}}
-	</div>
+      function search() {
+        window.location.search = $.param({
+          query: $("#quick-search").val(),
+          status: $("#request-status-select").val(),
+          organization_id: $("#request-organization-select").val()
+        });
+      }
 
-	<div class="my-activities-table request-table">
-		{{request_table}}
-	</div>
+    });
+    </script>
+
+    {{#if requests}}
+      <table id="request-table" class="request-table {{current_filter.identifier}}-requests">
+        <thead>
+          <tr>
+            <th>{{t 'id'}}</th>
+            <th>{{t 'subject'}}</th>
+            <th>
+              {{#is current_filter.identifier 'my'}}
+                {{t 'created'}}
+              {{else}}
+                {{t 'requester'}}
+              {{/is}}
+            </th>
+            <th>{{t 'last_activity'}}</th>
+            <th>{{t 'status'}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each requests}}
+            <tr>
+              <td>{{id}}</td>
+              <td>
+                <a href="{{url}}">
+                  {{#if subject}}
+                    {{subject}}
+                  {{else}}
+                    {{excerpt description characters=50}}
+                  {{/if}}
+                </a>
+              </td>
+              <td>
+                {{#is ../current_filter.identifier 'my'}}
+                  {{date created_at timeago=true}}
+                {{else}}
+                  {{requester.name}}
+                {{/is}}
+              </td>
+              <td>{{date updated_at timeago=true}}</td>
+              <td>
+                <span class="request-status request-{{status}}" title="{{status_description}}">
+                  {{status_name}}
+                </span>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <p>{{t 'no_requests'}}</p>
+    {{/if}}
+
+    {{pagination}}
+  </div>
 </div>
