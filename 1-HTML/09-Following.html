@@ -1,13 +1,44 @@
 <div class="container">
-	<header class="my-activities-header">
-		{{breadcrumbs}}
-	</header>
+  <header class="my-activities-header">
+    {{breadcrumbs}}
+  </header>
+  
+  <nav class="my-activities-nav">
+    <ul>
+      {{#if help_center.request_management_enabled}}
+        <li>{{link 'requests'}}</li>
+      {{/if}}
+      <li>{{link 'contributions'}}</li>
+      <li>{{t 'following'}}</li>
+    </ul>
+  </nav>
+  
+  <div class="my-activities-table following-table">
+    {{#if subscriptions}}
+      <table>
+        <thead>
+          <tr>
+            <th>{{t 'title'}}</th>
+            <th>{{t 'type'}}</th>
+            <th>{{t 'subscription'}}</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each subscriptions}}
+            <tr>
+              <td><a href="{{url}}" title="{{title}}">{{excerpt title characters=60}}</a></td>
+              <td>{{name}}</td>
+              <td>{{subscribe}}</td>
+              <td>{{unsubscribe}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
 
-	<nav class="my-activities-nav">
-		{{my_activities_navigation}}
-	</nav>
-
-	<div class="my-activities-table following-table">
-		{{following_table}}
-	</div>
+      {{pagination}}
+    {{else}}
+      <p>{{t 'not_following'}}</p>
+    {{/if}}
+  </div>
 </div>
