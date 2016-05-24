@@ -1,18 +1,21 @@
 <div class="container">
-	<nav class="sub-nav clearfix">
-		{{breadcrumbs}}
-	</nav>
-
-	<div class="clearfix">
-
-		<section class="col col-md-12">
-			<h1>{{header}}{{follow_up_hint}}</h1>
-			{{error_list}}
-			<div class="form">
-				{{form}}
-			</div>
-		</section>
-
-	</div>
+  <nav class="sub-nav clearfix">
+    {{breadcrumbs}}
+  </nav>
+  
+  <div class="clearfix">
+  
+    <section class="col col-md-12">
+      <h1>{{t 'submit_a_request'}}{{#if parent}}
+        <span class="follow-up-hint">
+          {{follow_up}}
+        </span>
+      {{/if}}</h1>
+      
+      <div class="form">
+        {{request_form}}
+      </div>
+    </section>
+  
+  </div>
 </div>
-{{chat}}
