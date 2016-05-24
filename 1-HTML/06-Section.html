@@ -1,18 +1,37 @@
 <div class="search-box">
-	<div class="container">
-		{{search}}
-	</div>
+  <div class="container">
+    {{search}}
+  </div>
 </div>
 
 <div class="container">
-	<nav class="sub-nav clearfix">
-		{{breadcrumbs}}
-		{{subscribe}}
-	</nav>
+  <nav class="sub-nav clearfix">
+    {{breadcrumbs}}
+    {{subscribe}}
+  </nav>
+  
+  <h1>{{#if section.internal}}
+    <span class="visibility-internal" data-title="{{t 'internal'}}">
+      <span class="visibility-internal-icon"></span>
+    </span>
+  {{/if}} {{section.name}}</h1>
+  <p class="section-description">{{section.description}}</p>
+  {{#if section.articles}}
+    <ul class="article-list">
+      {{#each section.articles}}
+        <li {{#if promoted}} class="article-promoted" {{/if}}>
+          {{#if promoted}}
+            <span data-title="{{t 'promoted'}}">★</span>
+          {{/if}}
+          <a href="{{url}}">{{title}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <i class="section-empty">
+      <a href="{{section.url}}">{{t 'empty'}}</a>
+    </i>
+  {{/if}}
 
-	<h1>{{visibility}} {{title}}</h1>
-	<p class="section-description">
-		{{description}}
-	</p>
-	{{article_list}}
+  {{pagination}}
 </div>
