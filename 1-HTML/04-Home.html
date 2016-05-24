@@ -1,17 +1,82 @@
+
 <div class="search-box">
-	<div class="container">
-		<h1 class="help-center-name">{{help_center_name}}</h1>
-		{{search}}
-	</div>
+  <div class="container">
+    <h1 class="help-center-name">{{help_center.name}}</h1>
+    {{search}}
+  </div>
 </div>
 
 <div class="container">
-	<div class="knowledge-base clearfix">
-		{{category_tree}}
-	</div>
+  <div class="knowledge-base clearfix">
+    {{#if categories}}
+      <div class="category-tree">
+        {{#each categories}}
+          <section class="category">
+            {{#if ../has_multiple_categories}}
+              <h2><a href="{{url}}">{{name}}</a></h2>
+            {{/if}}
+            {{#each sections}}
+              <section class="section">
+                <h3>
+                  {{#if internal}}
+                    <span class="visibility-internal" data-title="{{t 'internal'}}">
+                      <span class="visibility-internal-icon"></span>
+                    </span>
+                  {{/if}}
+                  <a href="{{url}}">{{name}}</a>
+                </h3>
+                {{#if articles}}
+                  <ul class="article-list">
+                    {{#each articles}}
+                      <li {{#if promoted}} class="article-promoted" {{/if}}>
+                        {{#if promoted}}
+                          <span data-title="{{t 'promoted'}}">★</span>
+                        {{/if}}
+                        <a href="{{url}}">{{title}}</a>
+                      </li>
+                    {{/each}}
+                  </ul>
+                  {{#if more_articles}}
+                    <a href="{{url}}" class="see-all-articles">
+                      {{t 'show_all_articles' count=article_count}}
+                    </a>
+                  {{/if}}
+                {{else}}
+                  <i class="section-empty">
+                    <a href="{{url}}">{{t 'empty'}}</a>
+                  </i>
+                {{/if}}
+              </section>
+            {{else}}
+              <i class="category-empty">
+                <a href="{{url}}">{{t 'empty'}}</a>
+              </i>
+            {{/each}}
 
-	<div class="community">
-		{{community_header}}
-		{{trending_questions}}
-	</div>
+            {{#if more_sections}}
+              <div>
+                <a href="{{url}}">{{t 'see_all_sections'}}</a>
+              </div>
+            {{/if}}
+          </section>
+        {{/each}}
+
+        {{pagination}}
+      </div>
+    {{/if}}
+  </div>
+  
+  <div class="community">
+    {{#if help_center.community_enabled}}
+      <h4>
+        {{t 'community'}}
+        {{#link 'community'}}
+          {{t 'browse'}}
+        {{/link}}
+      </h4>
+    {{/if}}
+    {{trending_questions_list}}
+    
+    
+  </div>
 </div>
