@@ -12,23 +12,7 @@ $(document).ready(function() {
 		document.querySelector('head').appendChild(msViewportStyle)
 	}
 
-	//alignment of Community Section
-	if (window.location.href.indexOf("communities") > -1) {
-		$("div.main-column").addClass('container');
-		$("div.side-column").hide();
 
-		//Remove Community-Nav
-		$("nav.community-nav").addClass('container');
-		//$("nav.community-nav").find('li:not(:last)').remove();
-		$("nav.sub-nav.clearfix").hide();
-
-		//ReName Community Post Button
-		$('a:contains("Post a question or idea")').text('New Question');
-		$("input[value='Post']").attr('value', 'Submit');
-
-		//Change string for submit Qeustion
-		$("h1:contains(What is your question or idea?)").text('What is your question?');
-	}
 
 	//ZenDesk Defaults ---------------------
 
