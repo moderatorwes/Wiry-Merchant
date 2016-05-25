@@ -1,6 +1,5 @@
 
-(DO NOT USE THIS THEME AS ITS NEEDS TO BE CONVERTED TO THE NEW CURLYBARS FRAMEWORK)
-*I will be updating this theme soon!
+
 
 Wiry-Merchant Responsive
 =======================
@@ -12,6 +11,7 @@ Like my theme then show your appreciation with a cup of coffee or two.
 Updates
 ========
 * 07/01/14 - Initial Commit
+* 05/25/16 - Updated Code for new framework
 
 
 
